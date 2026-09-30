@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GALLOPING STALLION</title>
+    <link rel="icon" type="image/png" href="images/bleach0.webp">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="ascii-container">
+            <pre id="ascii"></pre>
+        </div>
+
+        <img
+            id="logo"
+            src="images/blackgallop.png"
+            alt="Galloping Stallion"
+        >
+
+        <div class="names">
+            <div><a href="saidey.html">SAIDEY</a></div>
+            <div><a href="eleeo.html">eleeo</a></div>
+            <div>POTTER</div>
+
+            <div>KEV SEV</div>
+            <div>Gilligan Gigglebucket</div>
+            <div>Brendan Uover</div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const frames = [];
+
+        for (let i = 1; i <= 11; i++) {
+            frames.push(`images/ascii/${i}.txt`);
+        }
+
+        let currentFrame = 0;
+        const ascii = document.getElementById("ascii");
+
+        async function showFrame() {
+            try {
+                const response = await fetch(frames[currentFrame]);
+
+                if (!response.ok) {
+                    throw new Error(`Failed to load ${frames[currentFrame]}`);
+                }
+
+                const text = await response.text();
+
+                ascii.textContent = text;
+
+                currentFrame = (currentFrame + 1) % frames.length;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        showFrame();
+
+        setInterval(showFrame, 100);
+    </script>
+
+</body>
+
+</html>
+
