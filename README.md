@@ -1,9 +1,5 @@
 # SAIDEYLAND
 
-genre 
-
-
-    - preload animations per genre 
-    - genre tabs 
+spidermans black boyfriends
 - 
 - 
